@@ -1,0 +1,74 @@
+{
+  "software_mode": "Live",
+  "software_redirect_uris": [
+    "https://www.raidiam.com/accounting/cb"
+  ],
+  "software_statement_roles": [
+    {
+      "role": "DADOS",
+      "authorisation_domain": "Open Banking",
+      "status": "Active"
+    },
+    {
+      "role": "PAGTO",
+      "authorisation_domain": "Open Banking",
+      "status": "Active"
+    }
+  ],
+  "software_client_name": "Raidiam Accounting",
+  "org_status": "Active",
+  "software_client_id": "Cki1EbvjwyhPB12NGLlz2",
+  "iss": "Open Banking Open Banking Brasil prod SSA issuer",
+  "software_tos_uri": "https://www.raidiam.com/accounting/tos.html",
+  "software_client_description": "Raidiam Accounting leverage cutting edge open banking access to bring you real time up to date views of your finances",
+  "software_jwks_uri": "https://keystore.sandbox.directory.openbankingbrasil.org.br/74e929d9-33b6-4d85-8ba7-c146c867a817/1509a662-6b3a-4cb8-b7c0-ffb6e596eb0d/application.jwks",
+  "software_policy_uri": "https://www.raidiam.com/accounting/policy.html",
+  "software_id": "1509a662-6b3a-4cb8-b7c0-ffb6e596eb0d",
+  "software_client_uri": "https://www.raidiam.com/accounting.html",
+  "software_jwks_inactive_uri": "https://keystore.sandbox.directory.openbankingbrasil.org.br/74e929d9-33b6-4d85-8ba7-c146c867a817/1509a662-6b3a-4cb8-b7c0-ffb6e596eb0d/inactive/application.jwks",
+  "software_jwks_transport_inactive_uri": "https://keystore.sandbox.directory.openbankingbrasil.org.br/74e929d9-33b6-4d85-8ba7-c146c867a817/1509a662-6b3a-4cb8-b7c0-ffb6e596eb0d/inactive/transport.jwks",
+  "software_jwks_transport_uri": "https://keystore.sandbox.directory.openbankingbrasil.org.br/74e929d9-33b6-4d85-8ba7-c146c867a817/1509a662-6b3a-4cb8-b7c0-ffb6e596eb0d/transport.jwks",
+  "software_logo_uri": "https://www.raidiam.com/accounting/logo.png",
+  "org_id": "74e929d9-33b6-4d85-8ba7-c146c867a817",
+  "org_number": "112233445566",
+  "software_environment": "production",
+  "software_version": "1.1",
+  "software_roles": [
+    "DADOS",
+    "PAGTO"
+  ],
+  "org_name": "Open Banking Brasil",
+  "iat": 1631703237,
+  "organisation_competent_authority_claims": [
+    {
+      "authorisation_domain": "Open Banking",
+      "authorisations": [],
+      "registration_id": "13353236-OBB-CONTA",
+      "authority_id": "687a1c94-b360-4e04-9589-0fa5cb16451b",
+      "authority_name": "Banco Central",
+      "authorisation_role": "CONTA",
+      "authority_code": "BCB",
+      "status": "Active"
+    },
+    {
+      "authorisation_domain": "Open Banking",
+      "authorisations": [],
+      "registration_id": "13353236-OBB-DADOS",
+      "authority_id": "687a1c94-b360-4e04-9589-0fa5cb16451b",
+      "authority_name": "Banco Central",
+      "authorisation_role": "DADOS",
+      "authority_code": "BCB",
+      "status": "Active"
+    },
+    {
+      "authorisation_domain": "Open Banking",
+      "authorisations": [],
+      "registration_id": "13353236-OBB-PAGTO",
+      "authority_id": "687a1c94-b360-4e04-9589-0fa5cb16451b",
+      "authority_name": "Banco Central",
+      "authorisation_role": "PAGTO",
+      "authority_code": "BCB",
+      "status": "Active"
+    }
+  ]
+}

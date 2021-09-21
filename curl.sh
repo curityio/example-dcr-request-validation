@@ -1,0 +1,1 @@
+curl --cert certs/obb-test-client-2.cert.pem --key certs/obb-test-client.key.pem --cacert certs/server-cert-chain.pem https://localhost:8443/oauth/v2/oauth-dynamic-client-registration -d @obb-dcr-request2.json -v -k
