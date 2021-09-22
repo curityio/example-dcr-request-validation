@@ -1,7 +1,7 @@
-*.pem
+#*.pem
 *.keys
 license.json
-certs/
+#certs/
 pki/
 !pki/create_ca.sh
 !pki/openssl_intermediate.cnf
