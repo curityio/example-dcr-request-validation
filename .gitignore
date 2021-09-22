@@ -1,11 +1,11 @@
-#*.pem
+*.pem
 *.keys
 license.json
-#certs/
+certs/
+!certs/obb-issuing-sandbox-g1.cer
+!certs/obb-root-sandbox-g1.cer
+!certs/obb-ssa-issuing-sandbox.pem
 pki/
 !pki/create_ca.sh
 !pki/openssl_intermediate.cnf
 !pki/openssl.cnf
-!certs/obb-issuing-sandbox-g1.cer
-!certs/obb-root-sandbox-g1.cer
-!certs/obb-ssa-issuing-sandbox.cer
