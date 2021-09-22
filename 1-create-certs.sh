@@ -32,9 +32,9 @@ cd pki
 #
 # Create a root certificate authority for server certificates
 #
-./create_ca.sh $SSL_CA_NAME $SSL_ROOT_CERT_NAME $SSL_INTERMEDIATE_CERT_NAME
-./create_ca.sh $ACCREDITED_CA_NAME $ACCREDITED_ROOT_CERT_NAME $ACCREDITED_INTERMEDIATE_CERT_NAME
-./create_ca.sh $SSA_CA_NAME "Root CA for Open Banking Brasil" "Software Statement Assertion Issuer"
+./create_ca.sh "$SSL_CA_NAME" "$SSL_ROOT_CERT_NAME" "$SSL_INTERMEDIATE_CERT_NAME"
+./create_ca.sh "$ACCREDITED_CA_NAME" "$ACCREDITED_ROOT_CERT_NAME" "$ACCREDITED_INTERMEDIATE_CERT_NAME"
+./create_ca.sh "$SSA_CA_NAME" "Root CA for Open Banking Brasil" "Software Statement Assertion Issuer"
 
 #
 # Create the SSL certificate that back end components will use

@@ -78,4 +78,4 @@ function create_ca() {
   cd ..
 }
 
-create_ca $1 $2 $3
+create_ca "$1" "$2" "$3"
