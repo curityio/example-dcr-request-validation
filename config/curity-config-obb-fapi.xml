@@ -17,32 +17,12 @@
           </default-zone>
         </zones>
         <service-role>
-          <id>TestServer1</id>
-          <ssl-server-keystore>default-admin-ssl-key</ssl-server-keystore>
-          <mutual-tls>
-            <client-truststores>Regulatory_Body</client-truststores>
-            <client-truststores>Regulatory_Body_updated</client-truststores>
-          </mutual-tls>
-          <endpoints>authentication-service-anonymous</endpoints>
-          <endpoints>authentication-service-authentication</endpoints>
-          <endpoints>authentication-service-registration</endpoints>
-          <endpoints>token-service-anonymous</endpoints>
-          <endpoints>token-service-authorize</endpoints>
-          <endpoints>token-service-dynamic-client-registration</endpoints>
-          <endpoints>token-service-introspect</endpoints>
-          <endpoints>token-service-revoke</endpoints>
-          <endpoints>token-service-session</endpoints>
-          <endpoints>token-service-token</endpoints>
-          <endpoints>token-service-userinfo</endpoints>
-        </service-role>
-        <service-role>
           <id>default</id>
           <protocol>https</protocol>
           <ssl-server-keystore>default-admin-ssl-key</ssl-server-keystore>
           <enable-http-v2>true</enable-http-v2>
           <mutual-tls>
-            <client-truststores>Regulatory_Body</client-truststores>
-            <client-truststores>Regulatory_Body_updated</client-truststores>
+            <client-truststores>#{OBB_CLIENT_TRUSTSTORE_ID}</client-truststores>
           </mutual-tls>
           <endpoints>authentication-service-anonymous</endpoints>
           <endpoints>authentication-service-authentication</endpoints>
@@ -390,8 +370,7 @@
               <client-authentication-method>
                 <mutual-tls>
                   <trusted-cas>
-                    <trusted-ca>Regulatory_Body</trusted-ca>
-                    <trusted-ca>Regulatory_Body_updated</trusted-ca>
+                    <trusted-ca>#{OBB_CLIENT_TRUSTSTORE_ID}</trusted-ca>
                   </trusted-cas>
                 </mutual-tls>
                 <asymmetrically-signed-jwt>
@@ -402,8 +381,7 @@
                 </asymmetrically-signed-jwt>
               </client-authentication-method>
               <mutual-tls>
-                <trusted-issuers>Regulatory_Body</trusted-issuers>
-                <trusted-issuers>Regulatory_Body_updated</trusted-issuers>
+                <trusted-issuers>#{OBB_CLIENT_TRUSTSTORE_ID}</trusted-issuers>
               </mutual-tls>
             </non-templatized>
             <client-management>
@@ -483,20 +461,6 @@
           <id>default-admin-ssl-key</id>
           <keystore>data:application/p12;aes,v:S.MEpQZ3FJckZEMFpYSGE2OQ==.Rq_fVAtlePNQ8Pl7PR7PSw==.f-sHVSWx2W_gkgwoFG3xb-PDT-NQaZv4crLoMz0i8m7tFS66YqtPr4FO9ovrSk_Zp_Jtn_UhBcHfjVhBJyUbIsT7Tg7ELESfuHBaylIA8iTSNfgm36R_wYNGEaY7NsdgEqRvaVghUYXaFZ9rzNkRZNok1Z3FjacEIMt03kWMkJKclTlKAlFqdJSvUPlpNhRBpKZOO_nitaoEV6TWynjZVwxJQixAm5PySX9p4Yxnb4ycX4k0Ix3pTv0Q2po9T4WZCIPu-beFpxyyjxWAEZCyUN2YsON-0Kw6d13fJxO4EcaGJGdnIQOC9XvPyxtqqdnrTU4DY9N_TNPWoWJj6EDXTGqJ6HMvN8vQ-UFWIQQTPNvw9e1ILOGZ2LKLVITNIEYwBaSV_4K6g71SUDHTl8Sq2_PaabSIjDGV5C_68GLdsr1p23LLqqn_ZuGgtTrSvixrhFPvofhqrNxFXJ_KsVQuil8fX8KDyUv1maqKLKdaPltcNvr2opsFjvv7PsHV5rPxKs_ctnONVXj9M-VZBKG6vUeGFSru5UmjnJYdPXX5mcLZ75O3d0QcqniD4xKJBe7U_Psb-IGYiKTLuscPB-MvAVI8XDsktRjTEhc7lRs0eLDlta8_HSxG8h0Ih4mW4h7ryljW5I2UdhmD4ic9nPulgwel6P2-9AknV-0RKmyhm8DVCjNjiP3WSlqYirnIbso8QZ-WMOXexhcD4dnvpchJDjab55sK_Q3Eqzs8E8ke8QA1gi5H3WHPcRG8vSRQ2Ae2HthxeNgeQxVJJRpBcEivCb53kD2bnpbBs_od_nesq83LlsInjIzVsa8RnvuIJ7b2rW44UunJuvImkt0w3e-b8PU108EqMkw7xV4k-agw9iiKIDZRYVyQsi18Tg2bDyOS76DuEFmpVs6FDz6OTr20WNdx7smkOSJUXNuxYTEShRW6bdDKoWILC-ZbCdub_FBH8AjhzymL9CQR95zEDCjnsDGWQkUW2NUa5IUiTsiwKhloX8MDnbV3iIUeaLTa0AlNatJEw1KOf30EacYE3AjwjhwhFRQVeWDCL11NM859AGnhkdiYZEgp0d-b8iecHHZzzPRr0z11duNBKnazWoL0yt2LEDp0Ce5ZO7cK6yafcwEJb7wv4RgJeAuCInJQ40ZfkBI9-N7VTfVZPsIfn5n28E710ZDv1paznKyKlfL4c8owyeJyLqakF4m3DffMVk9ZFxuBoVWgfBaCpMUboRuM2kzq_ZOu3ohcYn8E9PnWDk89O9MXFBi7U8V_uywiWgALunVkLUCIXU2pE32JvnuRAS9lcrJ-XY8VVzIVb92ibA_X5c8M1ad0ZXxEaQlokwdFskGGYChglZT0eBQzRq2MNQsWSbToYNWoYTOs7uiXTn3PbGhi734N55K8d684hnw88lomzU4T41G4bihP5lzRXuIyDwJunRiEbzgWb2KsRJTrjQM186NRiMWbkPSNVGsd7yb67r3KmZuH1xdhnCA6lBo00rq8I8gatdrYttk_qo0TCHdnGbC2-E_l_ROhiAkHpiPX1uBIru7vkZbGiyU4uUshW0R1wic0hhHt4Vs6cFVLWCoOU7CJ27rYFgzg-YlfDjusFBjz4_pv9k06ydxe00KV_4h8JFw1eQYVXoFb8ArlQ4yJK03ksBsKmRWgrl2ghsfs387WQaVL6a9MV7S2QGO11l53-9vVqKl97FRltcRUuevVOonyAz-8s2cUa--PMfhE20Rrfb-FQCSFeSunK9gqeU7TShdv2DVl7ryDAhWgk7Dhxa_bXkS_YVmLga6JpWp6kG9-k_dMcqGUFibE2FzyVV7CRhPZav-ZZYk7_8L2XGvS38XDrWwZKY_IbTx-B7Gfkv0lsfJEFro7Wvs3QV4_YEyR01giymKzQOpQeHObTKbvjLK5p1NJ6D5ZaC3tHd8q5nNszPsr0o8o9mEMJxUNiwjjB9zoOtqDQsbttHLtrJGLDSHcKyOUChN5DgJA7tbbVy-BmxSeXW143GuGsSOf4c3dkyny4IrRbiLaOpW1NhyaTeKIUqMbej3mtajXv1nHRHIx8BszBnjeTQYpLXng-7F7rsZnmuwsyUHuxKbvZWy8VTc2InrNyVCB4wBPFIku-N8stKciR--Qzcz2gtZBUWkF-rZEb8sffN8H4YvZFG0bsP_tPhHCdRWyag0QGjTHnW5SrJgiEW-UiQeLTVEwRMc57e8Rf_YWdOJzHWm0PPUdaxgNeVOs_CB3wR_X7VJo1eb7HZXU6dN-xffhc6eV9_lwvw4EE_g4k7qd860UhXF5h6XQfsHXzuUVx24QdXvPzm-i_KGuCqTapYPKC99SdaSwRkW7fwGOlL8ai8Rp0dZehjbI4mdLconcSIPYkd14Mn3fl309f5nik94AydxI1v3Dk6yPtnmqk_z7CYFoAownOFkwWq_fZnEjyKjPKuf6xrDscRLCFogFHRefBMLxtOFiuSou8Q-T5srSS9qrTmFsaXbSo4iJJbT7H1GTZ4Fryds0d2_4okzVFYTWT-RGo7Y2zIbnsS7hZLFoqzQLgVfyzBPnpTZ1nJHeZzR25JmpexTsOhsuOKbt_zwkhvv39WSmQ0xNwnLc4Z7XV_F2mtJY_nJP0_b670S_d7VTumUGcLhc_lcfVqfqHsvnT9Yk7WZ3gjWQOHcR41QYqVfS-A_Zn47cjo5XDgh5SngDhoAk-WJSUQo0_KwzcYjgUtK6gkIp9oyfFaFHLttF6MXoCDBNCu5TzWFGKCBxUHlGpPX3tu5bp56CSS2z-0BZJnr4_3lIUom7ZEYfSIzr_7n0Eg8P2wDOrBCQKFMuJgVtZtKgsuOsy9or8r2SXRqmIrfgtgNp9z5kYfbqYdZpQ8zN6UB0YWdgtld8woi6xWRTKcAaNyeoYz6hS74PQ0JUd9r1P_og75nL_I-oTfYP5TAV2Fwdr2z25o5slb5yumrw7iOvQSBPX3O__EirlRiGSf-l05swKOp8aDTapcNCijDd1yK4zLAamdoKyaqSDDqdDrzcZLT-aVMmy5IwXBgWMU2omHHnV6PuNbfsz3WVjSlLeuxWBvnvPJ4pTwE5ewXl60wcNI9dYsQN9Jw7YSIf2NeGbPwxHVnsWuAk_g5CF-4Fe66fuzzMT0CynPacQOdrlBCbfHMV8VMSS6f0hpFKg4k-GowzzukegmLiog1LX5S4MTQ9Yda3ahH0BcQ8uoiPCO4tMnwoaBQuTBxBQoafi6G3ze5MFRg57R798NXgO77IEFfKhOEaONg95WqmX61N58lstZeYhZYl7xijyo3yCQYYfiDdgWJUlpJzEmIahq_8Ee3RH8d2FInRvwiJbnaFRfpQHJMHbNOVNi87rzpyH8Kr55-BBmXKRxmSEBSqx5xVTqRTxLycknXVB7XGf4PCbgZwZ1rHYXuJPpGHRmfnIOb5Yy-UTs2JXuj7lXWF74_OKnobQ0mBw3xBmtAdlNxOUHJmRPsuvTXqlX9NzbMouA==.NucgU_DwKV70hJNbXlde1cswcGGg9S59O24GpCU59IQ=</keystore>
         </server-keystore>
-        <client-truststore>
-          <client-certificate>
-            <id>Regulatory_Body</id>
-            <size>4096</size>
-            <keystore>data:application/pem;aes,v:S.eHJkQXlqck1kRjJmOEFlMQ==.A0ENptEfkNQ-yyckrBochw==.X8vLbYnQOEmaV3fKBSP-zZDoI4OrmS3T-kLGmxvBY8I-3deaPbGZ3z3RS1Vt5VpB9rfts-iNLj6eX9jtJHHzUzMDPRK-t6i-EbsRGwzkpCD5_4KHc9aH2zZkHGqVpc0pfIMV0DdPcG_wzw7YvvCL9UBRWcHY3IeA1t6BVsnXJKShCM29d5-fo8Uv_H5pz7K56XJ_V8yCscCPx8zwJs0nAR82Drpex_9ZF-ULC5Bdd7G-2j0N_dFmS1G69VFzFoNLoHgW4ual7XZ2eL6COqpiqif2mBbiH7munyc2cguuP8iJtGO1haA2wJgFhq88IhU7oVJUxDfPxpTtQVlce8p-5QAJPygMS5uHhuPxe7C1pakjpMA9mvQoYK-wLKUi7LKfiI4Lx-j-worAH_73L5VtyheQrUNZjRvqjRXGl4pOlCsPNxl332f09as56R5Wo88DTgvLH5898nA6qguoWPWrXLzqZL_IBsapG2Gk-G8kb_oKAIMAGSTLRQV-vAM0dkxKd1qZdViwA2nB5EoBaXSFBc59T9nWpbcd3IKzZN3sxN7t2W4hR2-YEUv30ZPG7B1_nym7OBkGkBCoya7iRcnCR8vfjxwWfXcjHx2Bxx9sWrKXAS9zCI3W60kbRtXrz-ZCkkNnSDi-Y0l6y1fWA8jHP2aFdKF8S7JDG7Ser5tNBYJBYvTGHlhQjirIUBuAO7NQ88dEiQui0SkwJ5a_xerUVnE6aFpquRFkvCR6VSZ-nldO34bLGzbW_xM8eVGnzR-UKXxu66hXmYfRc24X3r0X95fNjAVcb1NKOsb8NELj2mVspnXn7zrPg71pT-_NKiTxx8jq4VLz2CvS5E6J3NJ-oMedxJgffqForXUOxASTxnrEotz0rI1bm8RM4YkOIhjPC0RWLXaDU_CxG3Yrsm_yTRXCwx8GxJwEX0wbr9C2C7Y3cSkpUGJjjNiOvLxG3OLlBX-lH-xKasooBa01ZtYZXUWcFe6xal9qjoiGPgzxRZE-7AyXPYc9mRRhIYorhbtYA0Mr7lUfLoq0TyGNOFuWcz79-ZluzPdO-Le6soYCF0QpIjzgv-wBixwdsTSEQgnvyocRdDCn6rPZdpdM8O8ERgeW7X7drq3sjamysJTrCrGfAi9lag8oXxiWJTJ-Ye78mtPIOplM_DF-T30sCI_vSTeeg0dnFs90Z3HbdjuVekZk32Hnv2TNyjnLco1OMPDQiQYYIvaLsMLQXOv2xD5WCJvfnGPYn_hVJCnvWTvMPVur0EIvtOqbgQlyBR7F7cColI9bWFsTPRMWjetfdRdQMWizKdazsK6r6yIZxEk5YA5_NyKYlTOYa3AmobAZBBlS-PuABJUpQ5xDTsLSCn-u4tzHcGMxpIZ6JMlgbWG8yv-SvQdlpJZtLySxzueHG593TOpk2S3sees5cwLJ9UMthKeByb33xCxNY4JEOacqaQ7No-zs23Ebi-vwW1ZQwcTBgsUba4PdDAkCo3M_dt7igxMmyF2pkLcojBDqXwiDwRL6iUtzATRteDKyoVrgZUFzXhgwHo7C6UG1vkHpSfVLvceKFUR0DvXPWt8E4TUV9zmHr5IanAuu1vhHeyFpFEb6ISq8j9q3tsmfNX2HDulZe49-AKDD3Bmle2EE6uUZxglreKcPsiNXU78yfj20L-DfO1UUawmrsP-Xb52qvMjoCThh4eZ4P6HBQOA15_wDZLTSbA803bdxa_rN4uKFrPE04IvZDE1t2iMDsaub36rDciPZ-YgZdP-z6eSj6xJomdEbf0vKHQdo82mR4_9JUBjycV5_a2n-I9D6sNE7Qs45qjKNt3XeRHUmSAtWWlX4KdGF_LNgdipumNP45C6qtYaLQQbMXpRMPx4hdBYi9n9NHY5MDwzcpOAgV0p_oKHb0QT78-Pr-LL1JptlCrbBLJmqt0ZQuPm5YfjViveL0G57W1S96BlypqQjM6GG3acuzoAx-xST1wZuM_89S9F1uP4qZ4-87i__Zjxe6sCymxgPA5YpsfHvLO-bo6ttqJadZ2yk07GxbmxwrBgX1W-U19ZfF-NuxVozZLjWen-Hzk5hZqpe3Oa9zsrtwEKISbjuFaEkz8Fhig-egm6ZV0grS0d92MyzLc-9I4SdX9DNDMAMmIvH5bWC-bVnggMH74VL9jMxSJvq1N-t9lYI4jIog8l_BsgyonQqal6zFo9f3hDDEPjN5c-nefDtG92Ptp8jiDUPvoHvO-chnRxdwF8koI-FeecgFMObKgMiCeQ7P9JFAHJS9ACfv342NClOok1ygCO4v2_ql1Xerv2PNtCcjmDAN0ohX8J-ovhKABb3PSbpfSXb7-S8pYh25N_-sepLLnPRMKYgbR3xLrcQUUjDO4k4xSTcjJoHtBMcKvgivYsrKRDC_BU7bPB41WNABYYH2iuTTSANM2MPKzm5BA_2mmdAPV1mTFKh1p9MmW9SqVJ7R6BNDaF9oanT0o_tpNyrUzcUn3qrkUS5HR7wb5BsYWsH2mEdtrRFdmPfME2LftaGp71IttmFyKH-VxX3NVX0JdGGYPytjPMWED4wJ6OIjFmM9jzG_-eeMRfILbTVTQ3wocN5GNZ4BabbNDDfpcrNk1uL7528QX2AQbMAHI9eaLZg.jbgaTP6Z34M2wt4ZmKLFDxpYuwpPhdAw2m58qXcj1Fk=</keystore>
-            <type>rsa</type>
-          </client-certificate>
-          <client-certificate>
-            <id>Regulatory_Body_updated</id>
-            <size>4096</size>
-            <keystore>data:application/pem;aes,v:S.THd5SmtoRzhFTWpwQ2h0Tw==.UkzsyCZHwnQCPoZs1-DfFQ==.Krc1t33TKzsgOMhgfE4anElPQ3X8hmqik1jQNptGT4RIMJk0ctKRZioBHfRiPC9YSFd3FU_N2zh2ijPYpKwdo37rfkAUCcbNaf-ZnaksQwuFz-Xmk0dzXCtIiUr54Fvo95AffUgnhBFcrKj99kOptfgPvo0n4JKOvOV0mvmcw9J40RL4fnvOwQJBNXLyWoj7EADe13SeeNeEHYdi6XGv4OuFs2_x309NX1mBn3ABMQaOk9LIwulyQlHqIE3tmgxKFg2aZR6WwcuXGul0j9SmF6Wu7_OXaL_AzaIlVnWtwgMGJ8Vj4lOTvkLLcg-ewFSfG5FYkNu1OF6qhYwEIiViGsQt-tMHpssFfvjZrljwf9Pu0cIe9FAJVvIWicFJR0pB96NV09aR0NxEhvYyNTIkFEyx0HeCYJ11AMuvRzHHXQRMVheiaD-z_XMrbEXEYkVqI40pK73x8g-gRFkLX5-u7J1uQcU7xpm0zwGUe7jZlzbkTVAT4b-7mZCTu_wHAMlkqxwbqhr5VWYtsHsVJiJjtamsY3ETrypdSfjaspSjlyow5EulUsuPRJkMNKojApOjS3rr90-XVLJsFqY6iqUjHdrOigNXuM9UW0rB5TeHUtXmYWYtwuIKGFEb3KPkUl2j1YxWqS9dLbo3axFhSlpoqVu9IT1DRmLKbzmajyV1IJoNV_dTO5O_xSHB0-bIuAAo8n-qHUqC5H-taEfuct_Z_-GFR3K-fxPBZxasqzDz56tCruEeLwoh0XjLXBnaPTPxYb1fGJ1eWDfCRYTduW7dwEIM-95gULZ5XAhyrj9KKrR00s6BIpOxDs6RceHdv8AYTgobLkIe5EDU-DyeQHcWTxLqR_CaSriu9tm28g5_t4_5-rF3HmJefwSrZ6PqsntUXxo2mR4ha3u49R21m1kZZGDJeyTA0f4KuqI5qEOMfD-e1BJB4oJCKiWIf37DCp8I8KgRHTKq0HksDtkjD9URUwLNkuKRgNzMF5pUptBPfSOHht_if7ivBWCal8hXvEH6S8CrODkShWCN8nFJwYdki30bNuGMoQwK8mFLiEJXvtzKkBCITTUC5kN1F8HNH1YaUz9q-clF-4YHdktp5lzUMyjUlyAZe6cCDFumEZbWJNvjRq3RBLT85exw2MJw_88YYsSorVVWld63BuK57EuUQispVWCWk8fj1B6073DYpo85FT94PU5o1218rts-axcUGeHbx0sup0KUHx6Mgpbw83lKz2YVTbnlXA-8WIkJddTIwpvIiLJGPahGNAdd4bE8QwBYUWbkcYdMuDZbLZjcGe34EuapLEVKpfRP9zcKuxAA8hJU_wbflL_vws3HwJX9mKkdrBDEejDhawTBNM6xTthQbJlQvwhY0VyL_PGkqSP3KXyAsfQuw-zZTGC1PmF6vziYay3ayudIih13T2BarAhdrGzMaztBCxquZEqtNTGgomSAcIhXXjQIUPPLN6lPN6DCWjL8RPOexZyvV1oxLGQSgbcZDGqDhxPdnkTU0V5ZlxCAiuBwZKLr3GIoYtXo4NQK5p8KlK7NOlWnhV9t5MF3sRb6GRVQH-sju5bs7UuaC8oDDj_U1prqJe_FTPq0WVW2CfB_LFd5kY6BxeeNnuS8DV3K0ycFMGeConP4T-zURFRbOhZxwtXCGHGdznp47yFehpKff8OXJrhXW5D7rbODyNnMFWIQCN2H1cDDvq7MswhrAhqtLB0VZ6QbzItFdnPhbHknwca6aAV1suPMRXGDKe6AKoJYnOoOYmeNWTVRFt5W0LNuWNP6kjA-J3XJvCRCFs3E-I8fg0YfRFMdt6xILSGrGKBj_Av5D7WXO7mmRGz1ZtazpwCftpa8Rmx-A0QwXek9PjjT84DKSjbPfaURlNpun_iNWBLUcIYOtBn6OrenfvF1_sUJoO1TJ7xS90KFlHMqhnF8yp_QD7A_X6U-OqKaIDdY0n--OabF1Lykde6SpNnejCpphLpqsK_GoGx-IAC7u8A5VaOMT7yJJPs84GyakbnYsg0v0GbozdHmwkgZ0zaHonX8YZlp-bf0wOhn_Xilp-13XcaNOdSm4IPR2C-L3Xp1xHLrW_3fwo5CR065qe0tnH9JRi78QOjRZyW3PNGSPTAcx5MVt6upRbuzP-H9Smy2-W8RU0nkJePsO3csBFHslzNpm8c_NgBIQeBNErW2T20K6JdSZl7ATZDAZmu8ZPdItdDR1hSIZNG16RIvENn8tB23RNcx2ouPxXBJw0AR3ldhZGFx4zZXaJmsTq8lDlrzMDxmddSwiJg3AUCIMt74OXCwnSTE8S4ibb3VuAEgVLHqaXNVU6aQows880bOQXklGLr51hmBhdoIrX5_F1jKkNVqGAgYxk8TJ4R5i4m-okRWVkT-oKA_-Cpq8JlRG4h4kZnj3UWPk-Ct2u4W9xQk_VOVOfvgBJVR8fXtFL5dnUX4QYJW_HdKCIufi2UmjxVcYveISmDKZ86NiWIUQts7o_7jfsSPp_JSdv8EjxxzWdbN5ahb2Hv0b93SZsLvsEc6EpWYR-ir42GaUEQl0UehyswB91N2hSqnayzaTz6wq6CaFL7dp8taWBIZLwzrm9uSeRWCRr2Far4Bo6LhrxMa2NbrlAdJEfZV.FH78GbM4_WQ9msyjYlOUdxrXWLgfAS5SstkPfyFLpiU=</keystore>
-            <type>rsa</type>
-          </client-certificate>
-        </client-truststore>
       </ssl>
       <signing-keys>
         <signing-key>
@@ -508,12 +472,6 @@
         <signature-verification-key>
           <id>default-signature-verification-key</id>
           <keystore>data:application/pem;aes,v:S.QmVLMXl0RmxyUWx1NER3TA==.300c_IsPgvt2lMuWb6WOWg==.b_gfriLZdiYVNqJMfCYUhKdxmcGYoUau3-j94NueQ8A61jIPs7VOvYfFBnZEcKkv-LuhVEczqXuZK_7OjOi9_NDPbFOsvUqOOSpFkVotKiz1JQBXMFQxKWXs3qDhW4WXrihEATEG_Jfu82rM3sxvhIITLoIMQya-I77ZzdgBLQP8Lo0iJO6LBPWID-MldUYS10d4sfgY-_XRvmLdv-dfsqTcaYw3QfTGvHbU-SNXwnCYIx9cvSWwRqUSoyYTYrfAmm62LowKoS_Mhno_HrypTc8I_BSO6hFWsKCtu4qQEX3ycHQvDTyWyAhjbW--IbsVPvrpG-rUQUL1r9CsN7h4Vv-pFmi96OIUo62rhaEZ3QBkhabIVcFB5lv1QGfWIOqvXpKfWTAF04I_AwVL7oSTIK5S0DfB-Yt2zti4tnRA0Ge1UQfX3SpxXI5y0Hc5B8t-FvFMBVepEviVVdZDKG13JshjELp78E4rEyH2alH0Zu5DFS_M687s6dEyxKnouIGU95Km32d4pCj1KtCHwU3IU2jJxkLVG17rxLwCk4Y8bLPTF3cHVxZsEOB1TAT6Erw8ke687yWBFkIxcUmzMO3czCnEvm5f_jbCemWPb17Sw5yLL7iL8FBxNSaEa1qKHbsp0_l_4sRT4wMAuUmvGJF8MNTRT-EqlmSnkdaXRJnSeGLspojgAWxLICy_TdH_noZlrwZhE9w7AB9cIccEyAum7-3bXHoybFGZ-jw03ZwilWXPLT0YHMDk6zYoQx0lMI3RPGsHIfzorFekHqrR7gasoYHqHqwejpIOg-pO_QN2G6wofRfWIqvAMl7iBUZRjycn4jZTTEJnxhJp4bCBSCyWKGjGDSvi4dU-Odkvx_GT1W1myxN0LZ0tgu_MD4b9kRVlL4p95Z-l2QPRltUheW3vlJj_BT1uxCpPQSov553qOysDEWikECKSdkn7RDBpDy7QOmqMmtB0zqDBwqYXp5W44TfWEMU4jdD4gb2hrwkd9lWHVxZ96Zn1xyU7U_7Vi1uz-Ck9qho9wZbIyGZPgI160p9vdWwjP2mJscreeGZ6Sx7U7vBoTG3793KIn9RVLtIOnmBybT1EgdhdhvWt-S0kZl2cr10NRdOT7oMcBzjcvPnEutkbssRK_UpwSclyU72I-VbWgsAjbuB0pOUtFyg6gUbVcz_Iz6278gEMn09GcKyVjJ3UmTZkQT6A3oUQy_17fXxM2oAP8V0paFe7NHPTSjS4o4tbr5aYKy_WlLuXxUTRpXmCU8R2lhf19NKtglMcvHGXDhoHRttQ9Oauuk0wxVb4UDz1OLHCWGsM4Qtdq6rezaxJz3GhJMMZccsZ-6QaN9lynZrBGRlkk0QoiiKjkxh077QM_OU2azptszzCCH0Ytu63wAMLehF4bsIv2Q9L4CmBtFN19DLrqaUoU5tMZhuX0aU0mIGvVbrAs5yZ5N-zfTaFRj2R7HGlyyZjlqAe-ptqwwF-nSiRlXozWuzi1DYfXS8r-WozoMxJwqKb8JRXBwShyGQtyRcdTNhs3s9UaCSKWEcyrnzn6Pi3XHzw_iR4CJqhxiPIV_fFeAqxYsGqj_2XBrzmNNxxRqyAPNhP8m32yEDF2lvcf66dI4_I_tj62Y9bhfDBCmpGD5JN9fwiUf7zfmh_58XjUJk_OSpRE8KWAqHgtE02AXyi3V829j9U12TOW2iRyXBDr-_WWt8=.YfAB6YnEqN0bljH1MNpMel2xFJbLRqGanRxNOIK9XE8=</keystore>
-        </signature-verification-key>
-        <signature-verification-key>
-          <id>obb-production-ssa-issuer</id>
-          <size>4096</size>
-          <keystore>data:application/pem;aes,v:S.N1BJaFR1UUZUazZDRlNTSQ==.Px3Ojy21YB-72SwGUaFVaQ==.ApZvFtlHi5mVXjQ9iM-cSQbHKSqCXkikWf6s1f3tU-Wdu9PYD1cg2_Kbre5YL_7MILmbeSRs0qqGEYoep59k8YS00kjErYB8_LLAyR6i1Ww_nZsE0gMnEZU5gWHbp8mUpCUzIT-cV-vPnUQMoOsqghaWsxojAG23hID3NggpWg6W50WeSkTsdefZHupAVt46RiRJkJwMQYTlnL97NmF4xe3FuMNEONc5xwkL4b1jvayy4T_Q_Xs73E02q8RAKJ8uxbJm5m6yhTJoyowtlwkp3HPnp_v5jAENuZHt2ycLu1VHvk_nC59LpEjYcY88rWhNmberx_Impo1YjWfOJTNqO7ztmWuiKF4k8lVlsWI0F0ROU0z6Rxy1gwPPw19KfCYlaqGcpp5H2GW-LHvKaCDZXVY9-8IYxsQwxvhKfUAgZXg5PHVLaDwyxZmXeRlcPafg3TgS6ZY7rrPlOArPsJxqFuZ-xH0kLtrYrXDyPD5SQsZopjjrREBljb0a8VUXuCZyoI11KqlkDbkn75o3q0UOBM66yWMMJ5wc4Ud0H8hqEQrSYFSdn9yk2cm0Uio-MUuDmh7a899ku6iEGwsFzAyFL6DCWJFhLDOslBgnDljLGAYLd386c_1nzRT6PRt9qYrO3nLFTp9MSIukjvy9A0FWAuKSIKUJofyAY9AMSlRAbtKzeSG-fJqcQOqvR6y5bL0dXRFR9Q-y2LETykHSWc3bruYi-jq9lLquH6JdYCuXPfclp3Y8wq53EUzM9qmpsa1bynwqX0Am0rA5-FQzJtTDTZEKQh5mILqB3XPjfgEDrnipfAxjrFarFGhzMb-EVmDcPTRiPqJntK-EUnKF2WfEFleSA0z7gXEv-I-IoKvb_PpjoCTxsd_fzyV6hKA65Xw4BD85rN1DsH3m_X3kes0TMoATFCHTPpLjgbl0ykTOmpLpOgmJ_NQTW9QvqcuWzgVK6wgaeJmNstVuoWozTcRmEFJ-8wzyVE2cycjEPEnLIjS3bnB_IIs11sbRuOdkOCSnsLeRTqwYM9g_k9V4zsLzHLwcMS4Cygo4hGNSLwLGj6tk2mhUfiQxo6ejYKgIWX8c.dgCb2ymMSuy7XINKJOTkgEAwd3_D2GtN5xc9UzMaRO0=</keystore>
-          <type>rsa</type>
         </signature-verification-key>
       </signature-verification-keys>
     </crypto>

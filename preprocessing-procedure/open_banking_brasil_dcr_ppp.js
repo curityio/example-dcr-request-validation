@@ -62,7 +62,7 @@ function result(context) {
     */
 
     // TODO: Discuss when to validate signature as its time consuming
-    var ssa = context.validateSignatureAndExtractClaims("obb-production-ssa-issuer", requiredSignatureAlgorithm, softwareStatement);
+    var ssa = context.validateSignatureAndExtractClaims("obb-ssa-issuer", requiredSignatureAlgorithm, softwareStatement);
 
     if (!ssa || ssa.size() == 0) {
         throw exceptionFactory.badRequestException("Validation of software statement assertion failed.");
