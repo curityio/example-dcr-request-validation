@@ -41,7 +41,7 @@ cd pki
 #
 cd $SSL_CA_NAME
 
-openssl genrsa -passout pass:$TLS_CERT_PASSWORD -out intermediate/private/$TLS_CERT_FILE_PREFIX.key 2048
+openssl genrsa -aes256 -passout pass:$TLS_CERT_PASSWORD -out intermediate/private/$TLS_CERT_FILE_PREFIX.key 2048
 chmod 400 intermediate/private/$TLS_CERT_FILE_PREFIX.key
 echo '*** Successfully created TLS key.'
 
@@ -81,7 +81,7 @@ cd .. # exit SSL_CA_NAME
 #
 cd $ACCREDITED_CA_NAME
 
-openssl genrsa -passout pass:$CLIENT_CERT_PASSWORD -out intermediate/private/$CLIENT_CERT_FILE_PREFIX.key 2048
+openssl genrsa -aes256 -passout pass:$CLIENT_CERT_PASSWORD -out intermediate/private/$CLIENT_CERT_FILE_PREFIX.key 2048
 echo '*** Successfully created client key'
 
 openssl req \
@@ -116,11 +116,19 @@ cd .. # exit ACCREDITED_CA_NAME
 
 cd .. # exit pki
 
-mv pki/*.pem certs
+# Copy trustchains of all created CAs to certs folder
+mv pki/*.trustchain.pem certs
 
-mv pki/$SSL_CA_NAME/intermediate/private/$TLS_CERT_FILE_PREFIX.p12 certs
-cp pki/$SSL_CA_NAME/intermediate/certs/$TLS_CERT_FILE_PREFIX.cer certs
-mv pki/$ACCREDITED_CA_NAME/intermediate/private/$CLIENT_CERT_FILE_PREFIX.p12 certs
-cp pki/$ACCREDITED_CA_NAME/intermediate/certs/$CLIENT_CERT_FILE_PREFIX.cer certs
+# Copy server certificate and keystore to certs
+mv pki/"$SSL_CA_NAME"/intermediate/private/"$TLS_CERT_FILE_PREFIX".p12 certs
+cp pki/"$SSL_CA_NAME"/intermediate/certs/"$TLS_CERT_FILE_PREFIX".cer certs
+
+# Copy client certificate and keystore to
+mv pki/"$ACCREDITED_CA_NAME"/intermediate/private/"$CLIENT_CERT_FILE_PREFIX".p12 certs
+cp pki/"$ACCREDITED_CA_NAME"/intermediate/certs/"$CLIENT_CERT_FILE_PREFIX".cer certs
+
+##
+cp pki/"$ACCREDITED_CA_NAME"/intermediate/certs/intermediate.ca.cer certs/ssl-client-truststore/"$ACCREDITED_CA_NAME".issuer.cer
+cp pki/"$SSA_CA_NAME"/intermediate/certs/intermediate.ca.cer certs/signature-verification/"$SSA_CA_NAME".issuer.cer
 
 echo '*** Successfully moved generated certificates and keys to certs folder.'
