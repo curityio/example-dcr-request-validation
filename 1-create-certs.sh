@@ -69,6 +69,7 @@ echo '*** Successfully created TLS server certificate.'
 openssl pkcs12 \
     -export -inkey intermediate/private/$TLS_CERT_FILE_PREFIX.key \
     -in intermediate/certs/$TLS_CERT_FILE_PREFIX.cer \
+    -passin pass:$TLS_CERT_PASSWORD \
     -name $TLS_CERT_NAME \
     -out intermediate/private/$TLS_CERT_FILE_PREFIX.p12 \
     -passout pass:$TLS_CERT_PASSWORD
@@ -87,6 +88,7 @@ echo '*** Successfully created client key'
 openssl req \
     -config ../openssl-intermediate.cnf \
     -new \
+    -passin pass:$CLIENT_CERT_PASSWORD \
     -key intermediate/private/$CLIENT_CERT_FILE_PREFIX.key \
     -out intermediate/csr/$CLIENT_CERT_FILE_PREFIX.csr \
     -subj "/CN=$CLIENT_CERT_NAME"
