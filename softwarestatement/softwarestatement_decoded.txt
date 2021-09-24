@@ -38,7 +38,6 @@
     "PAGTO"
   ],
   "org_name": "Open Banking Brasil",
-  "iat": 1631703237,
   "organisation_competent_authority_claims": [
     {
       "authorisation_domain": "Open Banking",

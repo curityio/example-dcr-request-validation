@@ -53,7 +53,7 @@ function result(context) {
         throw exceptionFactory.badRequestException("Missing software_statement in request.");
     }
 
-    var ssa = context.validateSignatureAndExtractClaims($SSA_ISSUER_ID, requiredSignatureAlgorithm, softwareStatement);
+    var ssa = context.validateSignatureAndExtractClaims("$SSA_ISSUER_ID", softwareStatement, { acceptedAlgorithms: [requiredSignatureAlgorithm] });
 
     if (!ssa || ssa.size() == 0) {
         throw exceptionFactory.badRequestException("Validation of software statement assertion failed.");
@@ -175,7 +175,6 @@ function result(context) {
 // if supporting tls_client_auth client authentication mechanism as defined in [RFC8705] shall only accept tls_client_auth_subject_dn as an indication of the certificate subject value as defined in clause 2.1.2 [RFC8705];
     registrationData.forEach(function(key, value)
     {
-        // TODO: check if that can be solved by server configuration for non-templatized clients
         if (key.startsWith("tls_client_auth_") && key != "tls_client_auth_subject_dn") {
             throw exceptionFactory.badRequestException("Only tls_client_auth_subject_dn is allowed for indication of the certificate subject.");
         }

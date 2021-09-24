@@ -129,8 +129,12 @@ cp pki/"$SSL_CA_NAME"/intermediate/certs/"$TLS_CERT_FILE_PREFIX".cer certs
 mv pki/"$ACCREDITED_CA_NAME"/intermediate/private/"$CLIENT_CERT_FILE_PREFIX".p12 certs
 cp pki/"$ACCREDITED_CA_NAME"/intermediate/certs/"$CLIENT_CERT_FILE_PREFIX".cer certs
 
-##
+## Copy trusted issuers and signature verification keys
 cp pki/"$ACCREDITED_CA_NAME"/intermediate/certs/intermediate.ca.cer certs/ssl-client-truststore/"$ACCREDITED_CA_NAME".issuer.cer
 cp pki/"$SSA_CA_NAME"/intermediate/certs/intermediate.ca.cer certs/signature-verification/"$SSA_CA_NAME".issuer.cer
+
+## Required for signing software statement
+cp pki/"$ACCREDITED_CA_NAME"/intermediate/private/intermediate.ca.key certs/"$ACCREDITED_CA_NAME".issuer.key
+openssl rsa -in certs/"$ACCREDITED_CA_NAME".issuer.key -pubout -out certs/"$ACCREDITED_CA_NAME".issuer.pub
 
 echo '*** Successfully moved generated certificates and keys to certs folder.'

@@ -17,6 +17,6 @@ Getting a software statement
   * start a new flow called "Create JWT"
   * copy decoded software statement in the body
   * select PS256 from the drop down for the signature
-  * copy ssa-issuer.pub in the field for the public key
-  * copy ssa-issuer.key in the field for the private key
+  * copy ssa-ca.issuer.pub in the field for the public key
+  * copy ssa-ca.issuer.key in the field for the private key
   * Generate jwt and copy result
