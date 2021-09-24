@@ -10,6 +10,8 @@ An example based on the Open Banking Brasil profile that demonstrates how to use
 
   TODO: Update DN of client certificate to match OBB certificate profile
 
+Note that this repository just demonstrates how to validate a software statement with the help of pre-processing procedures based on the use case defined in the Open Banking Brasil profile. It does not by any means provide a deployment that is compliant with the OBB profile as there are further requirements on the client and Authorization Server.
+
 Getting a software statement
   * navigate to oauth.tools
   * start a new flow called "Create JWT"
