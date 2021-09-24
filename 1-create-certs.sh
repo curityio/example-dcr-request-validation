@@ -25,7 +25,7 @@ CLIENT_CERT_FILE_PREFIX='example.client'
 CLIENT_CERT_PASSWORD='Password1'
 
 SSL_CA_NAME='trusted-ca'
-ACCREDITED_CA_NAME='mocked-icp-ca'
+ACCREDITED_CA_NAME='accredited-ca'
 SSA_CA_NAME='ssa-ca'
 
 cd pki

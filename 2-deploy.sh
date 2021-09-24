@@ -36,7 +36,7 @@ SSA_ISSUER_ID="ssa-ca.issuer"
 
 # Id of trusted issuer of client certificates for mtls
 # Id matches the ceritifcate file name (without file ending) in etc/init/crypto/ssl-client-truststore
-MTLS_CLIENT_TRUSTSTORE_ID="mocked-icp-ca.issuer"
+MTLS_CLIENT_TRUSTSTORE_ID="accredited-ca.issuer"
 
 # For testing with the OBB sandbox environment use the following settings instead
 #SSA_ISSUER_ID="obb-ssa-issuing-sandbox"
