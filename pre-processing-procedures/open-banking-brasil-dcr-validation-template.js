@@ -52,17 +52,8 @@ function result(context) {
     if (!softwareStatement) {
         throw exceptionFactory.badRequestException("Missing software_statement in request.");
     }
-    /*
-        var jwtHeader = base64Decode(softwareStatement.split('.')[0]);
-        var ssaMetadata = context.json.fromJson(jwtHeader);
 
-        if (ssaMetadata.alg != requiredSignatureAlgorithm) {
-            throw exceptionFactory.badRequestException("Unexpected signature algorithm was found in software statement assertion.");
-        }
-    */
-
-    // TODO: Discuss when to validate signature as its time consuming
-    var ssa = context.validateSignatureAndExtractClaims("obb-ssa-issuer", requiredSignatureAlgorithm, softwareStatement);
+    var ssa = context.validateSignatureAndExtractClaims($SSA_ISSUER_ID, requiredSignatureAlgorithm, softwareStatement);
 
     if (!ssa || ssa.size() == 0) {
         throw exceptionFactory.badRequestException("Validation of software statement assertion failed.");
@@ -74,7 +65,7 @@ function result(context) {
     var iat = ssa.iat;
 
     if (secondsSince(iat) > maximumLifetimeInSeconds) {
-        //throw exceptionFactory.badRequestException("The software statement assertion is too old.");
+        throw exceptionFactory.badRequestException("The software statement assertion is too old.");
     }
 
 //========================================================
