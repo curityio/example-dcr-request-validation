@@ -36,11 +36,11 @@ SSA_ISSUER_ID="ssa-ca.issuer"
 
 # Id of trusted issuer of client certificates for mtls
 # Id matches the ceritifcate file name (without file ending) in etc/init/crypto/ssl-client-truststore
-OBB_CLIENT_TRUSTSTORE_ID="mocked-icp-ca.issuer"
+MTLS_CLIENT_TRUSTSTORE_ID="mocked-icp-ca.issuer"
 
 # For testing with the OBB sandbox environment use the following settings instead
 #SSA_ISSUER_ID="obb-ssa-issuing-sandbox"
-#OBB_CLIENT_TRUSTSTORE_ID="obb-issuing-sandbox-g1"
+#MTLS_CLIENT_TRUSTSTORE_ID="obb-issuing-sandbox-g1"
 
 # Update Pre-Processing-Procedure with correct ssa issuer id
 export SSA_ISSUER_ID
@@ -56,12 +56,12 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "*** Starting Identity Server in Docker container"
-echo "Using client truststore with id $OBB_CLIENT_TRUSTSTORE_ID"
+echo "Using client truststore with id $MTLS_CLIENT_TRUSTSTORE_ID"
 
 # Run the Identity Server and enable mtls
 docker run --rm --detach --publish 6749:6749 --publish 8443:8443 \
 --env PASSWORD=Password1 \
---env OBB_CLIENT_TRUSTSTORE_ID="$OBB_CLIENT_TRUSTSTORE_ID" \
+--env MTLS_CLIENT_TRUSTSTORE_ID="$MTLS_CLIENT_TRUSTSTORE_ID" \
 --env SERVICE_NAME="$SERVICE_NAME" \
 --name idsvr-dcr-validation idsvr:dcr-validation
 

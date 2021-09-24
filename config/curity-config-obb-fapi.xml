@@ -22,7 +22,7 @@
           <ssl-server-keystore>default-admin-ssl-key</ssl-server-keystore>
           <enable-http-v2>true</enable-http-v2>
           <mutual-tls>
-            <client-truststores>#{OBB_CLIENT_TRUSTSTORE_ID}</client-truststores>
+            <client-truststores>#{MTLS_CLIENT_TRUSTSTORE_ID}</client-truststores>
           </mutual-tls>
           <endpoints>authentication-service-anonymous</endpoints>
           <endpoints>authentication-service-authentication</endpoints>
@@ -370,7 +370,7 @@
               <client-authentication-method>
                 <mutual-tls>
                   <trusted-cas>
-                    <trusted-ca>#{OBB_CLIENT_TRUSTSTORE_ID}</trusted-ca>
+                    <trusted-ca>#{MTLS_CLIENT_TRUSTSTORE_ID}</trusted-ca>
                   </trusted-cas>
                 </mutual-tls>
                 <asymmetrically-signed-jwt>
@@ -381,7 +381,7 @@
                 </asymmetrically-signed-jwt>
               </client-authentication-method>
               <mutual-tls>
-                <trusted-issuers>#{OBB_CLIENT_TRUSTSTORE_ID}</trusted-issuers>
+                <trusted-issuers>#{MTLS_CLIENT_TRUSTSTORE_ID}</trusted-issuers>
               </mutual-tls>
             </non-templatized>
             <client-management>
