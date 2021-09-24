@@ -9,3 +9,6 @@ pki/
 !pki/create_ca.sh
 !pki/openssl_intermediate.cnf
 !pki/openssl.cnf
+dcr-request.json
+software-statement/software-statement.txt
+pre-processing-procedures/open-banking-brasil-dcr-validation.js
