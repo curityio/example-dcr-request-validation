@@ -5,7 +5,7 @@ An example based on the Open Banking Brasil profile that demonstrates how to use
 2.) Deploy
 3.) Register a client via DCR
   a) Get a software statement assertion
-  b) Update obb-dcr-request.json with the value of the jwt/ssa
+  b) Update dcr-request.json with the value of the jwt/ssa
   b) Run curl command
 
   TODO: Update DN of client certificate to match OBB certificate profile
