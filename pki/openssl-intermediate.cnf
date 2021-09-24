@@ -119,6 +119,7 @@ subjectKeyIdentifier    = hash
 authorityKeyIdentifier  = keyid, issuer:always
 keyUsage                = critical, digitalSignature, keyEncipherment
 extendedKeyUsage        = serverAuth
+subjectAltName          = @alt_name_localhost
 
 [ obb_cert ]
 basicConstraints        = CA:FALSE
@@ -127,10 +128,10 @@ subjectKeyIdentifier    = hash
 authorityKeyIdentifier  = keyid, issuer
 keyUsage                = critical,digitalSignature,keyEncipherment
 extendedKeyUsage        = clientAuth
-subjectAltName          = @obb_alt_name
+subjectAltName          = @alt_name_localhost
 
-[ obb_alt_name ]
-DNS =
+[ alt_name_localhost ]
+DNS = localhost
 
 [ crl_ext ]
 # Extension for CRLs (`man x509v3_config`).

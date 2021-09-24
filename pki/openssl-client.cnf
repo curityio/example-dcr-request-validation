@@ -1,0 +1,28 @@
+[ req ]
+# Options for the `req` tool.
+default_bits        = 2048
+prompt              = no
+distinguished_name  = client_distinguished_name
+req_extensions      = req_cert_extensions
+string_mask         = utf8only
+
+[client_distinguished_name]
+countryName             = BR
+stateOrProvinceName     = SP
+localityName            = Sao Paulo
+0.organizationName      = MyBank
+organizationalUnitName  = 74e929d9-33b6-4d85-8ba7-c146c867a817
+commonName              = my.bank.com.br
+UID                     = 1509a662-6b3a-4cb8-b7c0-ffb6e596eb0d
+businessCategory        = Private Organization
+jurisdictionCountryName = BR
+serialNumber            = 00112233445566
+
+[ req_cert_extensions ]
+basicConstraints = CA:FALSE
+subjectAltName = @alt_name
+keyUsage = critical,digitalSignature,keyEncipherment
+extendedKeyUsage = clientAuth
+
+[ alt_name ]
+DNS = localhost

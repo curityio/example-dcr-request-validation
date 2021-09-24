@@ -15,6 +15,7 @@ certs/*
 
 /pki/*
 !/pki/create_ca.sh
+!/pki/openssl-client.cnf
 !/pki/openssl-intermediate.cnf
 !/pki/openssl.cnf
 

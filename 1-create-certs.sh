@@ -14,12 +14,13 @@ SSL_INTERMEDIATE_CERT_NAME='Issuing CA for TLS Testing'
 
 TLS_CERT_FILE_PREFIX='example.tls'
 TLS_CERT_PASSWORD='Password1'
-TLS_CERT_NAME='*.example.com'
+TLS_CERT_NAME='CN=*.example.com'
 
 ACCREDITED_ROOT_CERT_NAME='Root CA for Client Certificates'
 ACCREDITED_INTERMEDIATE_CERT_NAME='Issuing CA for Client Certificates'
 
-CLIENT_CERT_NAME='demo-merchant'
+#CLIENT_CERT_DN='serialNumber=00038166000954,jurisdictionCountryName=BR,businessCategory=Business Entity,UID=Cki1EbvjwyhPB12NGLlz2,CN=tpp.example.com,OU=497e1ffe-b2a2-4a4e-8ef0-70633fd11b59,O=CURITY TESTING BANK,L=BRASILIA,ST=DF,C=BR"'
+CLIENT_CERT_NAME="example.client"
 CLIENT_CERT_FILE_PREFIX='example.client'
 CLIENT_CERT_PASSWORD='Password1'
 
@@ -52,7 +53,7 @@ openssl req \
     -passin pass:$TLS_CERT_PASSWORD \
     -key intermediate/private/$TLS_CERT_FILE_PREFIX.key \
     -out intermediate/csr/$TLS_CERT_FILE_PREFIX.csr \
-    -subj "/CN=$TLS_CERT_NAME"
+    -subj "/${TLS_CERT_NAME//,//}"
 echo '*** Successfully created TLS server certificate signing request.'
 
 openssl ca -config ../openssl-intermediate.cnf \
@@ -86,12 +87,11 @@ openssl genrsa -aes256 -passout pass:$CLIENT_CERT_PASSWORD -out intermediate/pri
 echo '*** Successfully created client key'
 
 openssl req \
-    -config ../openssl-intermediate.cnf \
+    -config ../openssl-client.cnf \
     -new \
     -passin pass:$CLIENT_CERT_PASSWORD \
     -key intermediate/private/$CLIENT_CERT_FILE_PREFIX.key \
-    -out intermediate/csr/$CLIENT_CERT_FILE_PREFIX.csr \
-    -subj "/CN=$CLIENT_CERT_NAME"
+    -out intermediate/csr/$CLIENT_CERT_FILE_PREFIX.csr
 echo '*** Successfully created client certificate signing request'
 
 openssl ca -config ../openssl-intermediate.cnf \
@@ -134,7 +134,7 @@ cp pki/"$ACCREDITED_CA_NAME"/intermediate/certs/intermediate.ca.cer certs/ssl-cl
 cp pki/"$SSA_CA_NAME"/intermediate/certs/intermediate.ca.cer certs/signature-verification/"$SSA_CA_NAME".issuer.cer
 
 ## Required for signing software statement
-cp pki/"$ACCREDITED_CA_NAME"/intermediate/private/intermediate.ca.key certs/"$ACCREDITED_CA_NAME".issuer.key
-openssl rsa -in certs/"$ACCREDITED_CA_NAME".issuer.key -pubout -out certs/"$ACCREDITED_CA_NAME".issuer.pub
+cp pki/"$SSA_CA_NAME"/intermediate/private/intermediate.ca.key certs/"$SSA_CA_NAME".issuer.key
+openssl rsa -in certs/"$SSA_CA_NAME".issuer.key -pubout -out certs/"$SSA_CA_NAME".issuer.pub
 
 echo '*** Successfully moved generated certificates and keys to certs folder.'
