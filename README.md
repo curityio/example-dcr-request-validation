@@ -25,8 +25,6 @@ However, certificates and keys used in the Open Banking Brazil Sandbox environme
 ## General
 This deployment will only work for Curity Identity Server version 6.5 and higher
 
-**TODO: update Dockerfile!**
-
 ## License
 Aquire a license that includes support for FAPI features and copy the license file to `config/license.json`.
 
@@ -34,12 +32,12 @@ Aquire a license that includes support for FAPI features and copy the license fi
 ### Server side
 * Server certificate and related key for the runtime service of the Curity Identity Server: `example.tls.p12`
 * Trusted issuer of client certificates: `accredited-ca.issuer.cer`
-* Signature verification key/certificate for the entity signing software statement assertions: `ssa-ca.issuer.cer`
+* Signature verification key/certificate for the entity signing the software statement assertions: `ssa-ca.issuer.cer`
 
 ### Client side
 * Client certificate and related key for testing: `example.client.p12`
 * Trustchain to validate server certificate during testing: `trusted-ca.trustchain.pem`
-* Private and public key for signing a software statement: `ssa-ca.issuer.key` and `ssa-ca.issuer.pub`
+* Private and public key for signing a software statement used for testing: `ssa-ca.issuer.key` and `ssa-ca.issuer.pub`
 
 # Deployment
 1. Create the required certificates: `./1-create-certs.sh`
@@ -65,6 +63,7 @@ The client must provide a software statement during the Dynamic Client Registrat
 ## Dynamic Client Registration
 Run `4-register-DCR-client.sh` to register a client using the client certificate for MTLS and the software statement created before.
 
+If successful, the server will return the client metadata that it registered.
 
 ## More Information
 Please visit [curity.io](https://curity.io/) for more information about the Curity Identity Server.
