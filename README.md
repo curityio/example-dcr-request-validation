@@ -55,7 +55,7 @@ The client must provide a software statement during the Dynamic Client Registrat
 1. Copy the public key from `certs/ssa-ca.issuer.pub` into the field for the Public Key.
 1. Copy the private key from `certs/ssa-ca.issuer.key` into the field for the Private Key.
 1. Prepare the content of the software statement: `./3-prepare-software-statement-data.sh`
-1. Copy the content of the file `software-statement/software-statement.txt` into the field for the Body.
+1. Copy the content of the file `software-statement/software-statement.json` into the field for the Body.
 1. Save the Body.
 1. Click on `Generate JWT`.
 1. Copy the resulted JWT (there's a `Copy to Clipboard` button in the upper right corner of the box).

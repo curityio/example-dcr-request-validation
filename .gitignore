@@ -20,5 +20,5 @@ certs/*
 !/pki/openssl.cnf
 
 /dcr-request.json
-/software-statement/software-statement.txt
+/software-statement/software-statement.json
 /pre-processing-procedures/open-banking-brasil-dcr-validation.js
