@@ -1,4 +1,6 @@
 #!/bin/bash
+# Get local directory
+D=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 export ISSUED_AT=$(date +%s)
-envsubst < software-statement/software-statement-template.json > software-statement/software-statement.txt
+envsubst < "$D"/software-statement/software-statement-template.json > "$D"/software-statement/software-statement.txt

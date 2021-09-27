@@ -42,13 +42,16 @@ MTLS_CLIENT_TRUSTSTORE_ID="accredited-ca.issuer"
 #SSA_ISSUER_ID="obb-ssa-issuing-sandbox"
 #MTLS_CLIENT_TRUSTSTORE_ID="obb-issuing-sandbox-g1"
 
+# Get local directory
+D=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+
 # Update Pre-Processing-Procedure with correct ssa issuer id
 export SSA_ISSUER_ID
-envsubst < pre-processing-procedures/open-banking-brasil-dcr-validation-template.js > pre-processing-procedures/open-banking-brasil-dcr-validation.js
+envsubst < "$D"/pre-processing-procedures/open-banking-brasil-dcr-validation-template.js > "$D"/pre-processing-procedures/open-banking-brasil-dcr-validation.js
 
 # Building Docker image for testing DCR validation for Open Banking Brasil
 # Copy license, certificates and pre-processing procedure to the etc/init folder
-docker build --tag idsvr:dcr-validation --file docker/Dockerfile .
+docker build --tag idsvr:dcr-validation --file "$D"/docker/Dockerfile "$D"
 
 if [ $? -ne 0 ]; then
   echo "Problem encountered building Docker image."
@@ -90,7 +93,7 @@ echo "Updating the server certificate ..."
 echo "Using server ssl keystore with id $SSL_KEY_ID"
 
 # Preparing the SSL keystore for the runtime
-SSL_KEYSTORE_B64=$(openssl base64 -e -A -in "$SSL_KEYSTORE_FILE")
+SSL_KEYSTORE_B64=$(openssl base64 -e -A -in "$D"/"$SSL_KEYSTORE_FILE")
 
 if [ $? -ne 0 ]; then
   echo "Problem encountered when loading TLS keystore. Using default instead."
@@ -107,7 +110,7 @@ EOF
 fi
 
 echo "Adding the official signature verification key ..."
-SSA_OFFICIAL_ISSUER_B64=$(openssl base64 -e -A -in "$SSA_OFFICIAL_ISSUER_FILE")
+SSA_OFFICIAL_ISSUER_B64=$(openssl base64 -e -A -in "$D"/"$SSA_OFFICIAL_ISSUER_FILE")
 
 if [ $? -ne 0 ]; then
   echo "Problem encountered when loading signature verification key. Deployment failed."
