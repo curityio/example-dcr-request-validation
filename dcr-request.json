@@ -1,7 +1,7 @@
 {
   "token_endpoint_auth_method": "tls_client_auth",
-  "tls_client_auth_subject_dn": "serialNumber=00112233445566,jurisdictionCountryName=BR,businessCategory=Private Organization,UID=f69c8291-3dab-425b-bdc0-a8cf54a5f3b0,CN=tpp.example.com,OU=368a900d-89a3-4c59-a624-1387f1b541fb,O=CURITY TESTING BANK,L=BRASILIA,ST=DF,C=BR",
-  "redirect_uris": ["https://www.raidiam.com/accounting/cb"],
+  "tls_client_auth_subject_dn": "serialNumber=00112233445566,jurisdictionCountryName=BR,businessCategory=Private Organization,UID=f69c8291-3dab-425b-bdc0-a8cf54a5f3b0,CN=tpp.example.com,OU=368a900d-89a3-4c59-a624-1387f1b541fb,O=Testing Bank,L=Sao Paulo,ST=SP,C=BR",
+  "redirect_uris": ["https://tpp.example.com/cb"],
   "jwks_uri": "https://keystore.sandbox.directory.openbankingbrasil.org.br/74e929d9-33b6-4d85-8ba7-c146c867a817/1509a662-6b3a-4cb8-b7c0-ffb6e596eb0d/application.jwks",
   "software_statement":"Place JWT here"
 }
