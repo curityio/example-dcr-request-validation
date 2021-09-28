@@ -21,4 +21,4 @@ certs/*
 
 /dcr-request.json
 /software-statement/software-statement.json
-/pre-processing-procedures/open-banking-brasil-dcr-validation.js
+/pre-processing-procedures/open-banking-brazil-dcr-validation.js

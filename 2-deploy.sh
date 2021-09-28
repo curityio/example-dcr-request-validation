@@ -5,7 +5,7 @@
 # The Authorization Server is configured to support mutual TLS.
 # The configuration includes a pre-processing procedure for validation of
 # the software statement in the DCR request according to the requirements
-# of Open Banking Brasil.
+# of Open Banking Brazil.
 # https://github.com/OpenBanking-Brasil/specs-seguranca/blob/main/open-banking-brasil-dynamic-client-registration-1_ID1.md.
 #
 # Note for developing purpose the deployment created by this script uses its
@@ -45,11 +45,27 @@ MTLS_CLIENT_TRUSTSTORE_ID="accredited-ca.issuer"
 # Get local directory
 D=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
+#
+# Check that a license file for the Curity Identity Server has been provided
+#
+if [ ! -f "$D/config/license.json" ]; then
+  echo "Please provide a license.json file in the $D/config folder in order to deploy the system."
+  exit 1
+fi
+
+#
+# Check that a server SSL certificate for the Curity Identity Server has been provided
+#
+if [ ! -f "$D/certs/example.tls.p12" ]; then
+  echo "Please create certificates before deploying the system."
+  exit 1
+fi
+
 # Update Pre-Processing-Procedure with correct ssa issuer id
 export SSA_ISSUER_ID
-envsubst < "$D"/pre-processing-procedures/open-banking-brasil-dcr-validation-template.js > "$D"/pre-processing-procedures/open-banking-brasil-dcr-validation.js
+envsubst < "$D"/pre-processing-procedures/open-banking-brazil-dcr-validation-template.js > "$D"/pre-processing-procedures/open-banking-brazil-dcr-validation.js
 
-# Building Docker image for testing DCR validation for Open Banking Brasil
+# Building Docker image for testing DCR validation for Open Banking Brazil
 # Copy license, certificates and pre-processing procedure to the etc/init folder
 docker build --tag idsvr:dcr-validation --file "$D"/docker/Dockerfile "$D"
 

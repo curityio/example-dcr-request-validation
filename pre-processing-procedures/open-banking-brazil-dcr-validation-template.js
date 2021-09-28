@@ -20,23 +20,23 @@ function result(context) {
 //========================================================
     /*
         shall reject dynamic client registration requests not performed over a connection secured with mutual tls using certificates issued by Brazil ICP (production) or the Directory of Participants (sandbox);
-        shall validate that the request contains software_statement JWT signed using the PS256 algorithim issued by the Open Banking Brasil directory of participants;
+        shall validate that the request contains software_statement JWT signed using the PS256 algorithim issued by the Open Banking Brazil directory of participants;
         shall validate that the software_statement was issued (iat) not more than 5 minutes prior to the request being received;
         shall validate that a jwks (key set by value) was not included;
         shall require and validate that the jwks_uri matches the software_jwks_uri provided in the software statement;
         shall require and validate that redirect_uris match or contain a sub set of software_redirect_uris provided in the software statement;
         shall require and validate that all client authentication mechanism adhere to the requirements defined in Financial-grade API Security Profile 1.0 - Part 1: Advanced;
-        shall require encrypted request objects as required by the Brasil Open Banking Security Profile;
+        shall require encrypted request objects as required by the Brazil Open Banking Security Profile;
         shall validate that requested scopes are appropriate for the softwares authorized regulatory roles;
         should where possible validate client asserted metadata against metadata provided in the software_statement;
-        shall accept all x.500 AttributeType name strings defined in the Distinguished Name of the x.509 Certificate Profiles defined in [Open Banking Brasil x.509 Certificate Standards][OBB-Cert-Standards];
+        shall accept all x.500 AttributeType name strings defined in the Distinguished Name of the x.509 Certificate Profiles defined in [Open Banking Brazil x.509 Certificate Standards][OBB-Cert-Standards];
         if supporting tls_client_auth client authentication mechanism as defined in [RFC8705] shall only accept tls_client_auth_subject_dn as an indication of the certificate subject value as defined in clause 2.1.2 [RFC8705];
     */
 //========================================================
 
 
 //========================================================
-// shall validate that the request contains software_statement JWT signed using the PS256 algorithim issued by the Open Banking Brasil directory of participants;
+// shall validate that the request contains software_statement JWT signed using the PS256 algorithim issued by the Open Banking Brazil directory of participants;
 
     if (!softwareStatement) {
         throw exceptionFactory.badRequestException("Missing software_statement in request.");
@@ -98,7 +98,7 @@ function result(context) {
 // solved by configuration for client authentication
 
 //========================================================
-// shall require encrypted request objects as required by the Brasil Open Banking Security Profile;
+// shall require encrypted request objects as required by the Brazil Open Banking Security Profile;
 //
 // not applicable in DCR context
 
@@ -192,7 +192,7 @@ function result(context) {
     });
 
 //========================================================
-// shall accept all x.500 AttributeType name strings defined in the Distinguished Name of the x.509 Certificate Profiles defined in [Open Banking Brasil x.509 Certificate Standards][OBB-Cert-Standards];
+// shall accept all x.500 AttributeType name strings defined in the Distinguished Name of the x.509 Certificate Profiles defined in [Open Banking Brazil x.509 Certificate Standards][OBB-Cert-Standards];
 // shall select and apply the encryption algorithm and cipher choice from the most recommended of the IANA cipher suites that is supported by the Authorisation Server;
 //
 // solved by server configuration

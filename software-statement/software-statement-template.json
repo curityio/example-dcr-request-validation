@@ -18,7 +18,7 @@
   "software_client_name": "Curity Testing Client",
   "org_status": "Active",
   "software_client_id": "mryJ1lewJk8KY84RPJ8q",
-  "iss": "Open Banking Open Banking Brasil prod SSA issuer",
+  "iss": "Open Banking Open Banking Brazil prod SSA issuer",
   "iat" : $ISSUED_AT,
   "software_tos_uri": "https://tpp.example.com/tos.html",
   "software_client_description": "This is just an unregistered client with made up URLs.",
