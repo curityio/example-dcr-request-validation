@@ -20,7 +20,7 @@ function result(context) {
 //========================================================
     /*
         shall reject dynamic client registration requests not performed over a connection secured with mutual tls using certificates issued by Brazil ICP (production) or the Directory of Participants (sandbox);
-        shall validate that the request contains software_statement JWT signed using the PS256 algorithim issued by the Open Banking Brazil directory of participants;
+        shall validate that the request contains software_statement JWT signed using the PS256 algorithm issued by the Open Banking Brazil directory of participants;
         shall validate that the software_statement was issued (iat) not more than 5 minutes prior to the request being received;
         shall validate that a jwks (key set by value) was not included;
         shall require and validate that the jwks_uri matches the software_jwks_uri provided in the software statement;
@@ -36,7 +36,7 @@ function result(context) {
 
 
 //========================================================
-// shall validate that the request contains software_statement JWT signed using the PS256 algorithim issued by the Open Banking Brazil directory of participants;
+// shall validate that the request contains software_statement JWT signed using the PS256 algorithm issued by the Open Banking Brazil directory of participants;
 
     if (!softwareStatement) {
         throw exceptionFactory.badRequestException("Missing software_statement in request.");
