@@ -65,5 +65,12 @@ Run `4-register-DCR-client.sh` to register a client using the client certificate
 
 If successful, the server will return the client metadata that it registered.
 
+## Contribution
+If you want to contribute, fork the repository. Copy the git pre-commit hook script into the local .git folder of your repository:
+
+`cp hooks/pre-commit .git/hooks/`
+
+The script prevents you from checking in a license or keys by accident during development.
+
 ## More Information
 Please visit [curity.io](https://curity.io/) for more information about the Curity Identity Server.
