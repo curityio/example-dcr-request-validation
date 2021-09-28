@@ -59,6 +59,7 @@ The client must provide a software statement during the Dynamic Client Registrat
 1. Copy the resulted JWT (there's a `Copy to Clipboard` button in the upper right corner of the box).
 1. Open `dcr-request.json`.
 1. Replace the string "*Place JWT here*" with the JWT from the clipboard.
+1. Save `dcr-request.json`.
 
 ## Dynamic Client Registration
 Run `4-register-DCR-client.sh` to register a client using the client certificate for MTLS and the software statement created before.
