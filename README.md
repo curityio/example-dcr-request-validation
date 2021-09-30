@@ -73,7 +73,7 @@ If you want to contribute, fork the repository. Copy the git pre-commit hook scr
 
 `cp hooks/pre-commit .git/hooks/`
 
-The script prevents you from checking in a license or keys by accident during development.
+The script prevents you from checking in a license by accident during development.
 
 ## More Information
 Please visit [curity.io](https://curity.io/) for more information about the Curity Identity Server.
