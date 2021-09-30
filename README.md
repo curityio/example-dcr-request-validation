@@ -8,6 +8,8 @@ This repository contains an example based on the Open Banking Brazil profile tha
 # Open Banking Brazil
 The Open Banking Brazil (aka Open Banking Brasil or OBB) ecosystem provides a central repository, the "directory" for accredited and trusted clients as well as authorization servers. Registered clients can then retrieve a signed software statement from the directory, aka the software statement assertion (SSA), a signed JWT. The client includes this token in the Dynamic Client Registration request and authenticates using mutual TLS. The Authorization Server is obliged to verify the software statement assertion according to the specification. The Curity Identity Server version 6.5 and later support Pre-Processing Procedures for DCR endpoints that can be used to validate and manipulate incoming DCR requests.
 
+![Open Banking Brazil DCR Request Validation](./docs/images/obb-dcr-diagram.png)
+
 Please refer to the profile documentation for the details:
 * [Open Banking Brasil Security Profile](https://github.com/OpenBanking-Brasil/specs-seguranca/blob/main/open-banking-brasil-financial-api-1_ID3.md)
 * [Open Banking Brasil Dynamic Client Registration Profile](https://github.com/OpenBanking-Brasil/specs-seguranca/blob/main/open-banking-brasil-dynamic-client-registration-1_ID1.md)
