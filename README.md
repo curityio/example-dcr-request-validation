@@ -6,7 +6,7 @@
 This repository contains an example based on the Open Banking Brazil profile that demonstrates how to use a Pre-Processing Procedure to validate a DCR request.
 
 # Open Banking Brazil
-The Open Banking Brazil (aka Open Banking Brasil or OBB) ecosystem provides a central repository, the "directory" for accredited and trusted clients as well as authorization servers. Registered clients can then retrieve a signed software statement from the directory, aka the software statement assertion (SSA), a signed JWT. The client includes this token in the Dynamic Client Registration request and authenticates using mutual TLS. The Authorization Server is obliged to verify the software statement assertion according to the specification. The Curity Identity Server version 6.5 and later support Pre-Processing Procedures for DCR endpoints that can be used to validate and manipulate incoming DCR requests.
+The Open Banking Brazil (aka Open Banking Brasil or OBB) ecosystem provides a central repository, the "directory" for accredited and trusted clients as well as authorization servers. Registered clients can then retrieve a signed software statement from the directory, aka the software statement assertion (SSA), a signed JWT. The client includes this token in the Dynamic Client Registration request and authenticates using mutual TLS. The Authorization Server is obliged to verify the software statement assertion according to the specification. The Curity Identity Server version 6.5 and later support Pre-Processing Procedures for DCR endpoints that can be used to validate and manipulate incoming DCR requests. Learn more about using [Pre-Processing Procedures for DCR Request Validation in Open Banking](https://curity.io/resources/learn/dcr-validation-in-pre-processing-procedure/) by checking out the related article in [Curity's resource library](https://curity.io/resources/).
 
 ![Open Banking Brazil DCR Request Validation](./docs/images/obb-dcr-diagram.png)
 
@@ -25,7 +25,7 @@ However, certificates and keys used in the Open Banking Brazil Sandbox environme
 
 # Requirements
 ## General
-This deployment will only work for Curity Identity Server version 6.5 and higher
+This deployment will only work for Curity Identity Server version 6.5 and higher.
 
 ## License
 Aquire a license that includes support for FAPI features and copy the license file to `config/license.json`.
@@ -54,7 +54,7 @@ The client must provide a software statement during the Dynamic Client Registrat
 1. Select `PS256` from the dropdown in the Signature area.
 1. Copy the public key from `certs/ssa-ca.issuer.pub` into the field for the Public Key.
 1. Copy the private key from `certs/ssa-ca.issuer.key` into the field for the Private Key.
-1. Prepare the content of the software statement: `./3-prepare-software-statement-data.sh`
+1. Prepare the content of the software statement and DCR request: `./3-prepare-software-statement-data.sh`
 1. Copy the content of the file `software-statement/software-statement.json` into the field for the Body.
 1. Save the Body.
 1. Click on `Generate JWT`.
