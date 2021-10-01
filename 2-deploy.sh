@@ -63,6 +63,7 @@ fi
 
 # Update Pre-Processing-Procedure with correct ssa issuer id
 export SSA_ISSUER_ID
+mkdir -p "$D"/pre-processing-procedures
 envsubst < "$D"/templates/open-banking-brazil-dcr-validation-template.js > "$D"/pre-processing-procedures/open-banking-brazil-dcr-validation.js
 
 # Building Docker image for testing DCR validation for Open Banking Brazil
