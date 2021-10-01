@@ -1,0 +1,39 @@
+{
+  "software_mode": "Live",
+  "software_redirect_uris": [
+    "https://tpp.example.com/cb"
+  ],
+  "software_statement_roles": [
+    {
+      "role": "DADOS",
+      "authorisation_domain": "Open Banking",
+      "status": "Active"
+    },
+    {
+      "role": "PAGTO",
+      "authorisation_domain": "Open Banking",
+      "status": "Active"
+    }
+  ],
+  "software_client_name": "Curity Testing Client",
+  "org_status": "Active",
+  "software_client_id": "mryJ1lewJk8KY84RPJ8q",
+  "iss": "Open Banking Open Banking Brazil prod SSA issuer",
+  "iat" : $ISSUED_AT,
+  "software_tos_uri": "https://tpp.example.com/tos.html",
+  "software_client_description": "This is just an unregistered client with made up URLs.",
+  "software_jwks_uri": "https://keystore.sandbox.directory.openbankingbrasil.org.br/74e929d9-33b6-4d85-8ba7-c146c867a817/1509a662-6b3a-4cb8-b7c0-ffb6e596eb0d/application.jwks",
+  "software_policy_uri": "https://tpp.example.com/policy.html",
+  "software_id": "f69c8291-3dab-425b-bdc0-a8cf54a5f3b0",
+  "software_client_uri": "https://tpp.example.com",
+  "software_logo_uri": "https://tpp.example.com/logo.png",
+  "org_id": "368a900d-89a3-4c59-a624-1387f1b541fb",
+  "org_number": "112233445566",
+  "software_environment": "production",
+  "software_version": "1.0",
+  "software_roles": [
+    "DADOS",
+    "PAGTO"
+  ],
+  "org_name": "Curity AB"
+}
